@@ -4,7 +4,7 @@
 # Requirements
 The requirements.txt file lists everything that you need to run the app. These are:
 	
-* python
+* python==3.8.1
 * anyio==3.4.0
 * asgiref==3.4.1
 * click==8.0.3
