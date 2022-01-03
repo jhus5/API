@@ -58,7 +58,7 @@ FastAPI comes with API documentation courtesy of swagger ui. To access this you 
    http://127.0.0.1:8000/docs
 
 # Access endpoints
-You can access and test all the endpoints from the interactive api documentation as well as test it out.
+You can access and test all the endpoints from the interactive api documentation as well as test eacho one out. A 4th endpoint was added to retrieve all documents. 
 
 # FastAPI
 FastAPI was selected due to its high performance, especially with large amounts of data, and being fast to code. 
