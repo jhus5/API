@@ -5,11 +5,27 @@
 The requirements.txt file lists everything that you need to run the app. These are:
 	
 * python
-* bb
-* ss
-* ss
-* ss
-* ss
+* anyio==3.4.0
+* asgiref==3.4.1
+* click==8.0.3
+* dnspython==2.1.0
+* fastapi==0.70.1
+* h11==0.12.0
+* httptools==0.3.0
+* idna==3.3
+* pydantic==1.8.2
+* pymongo==4.0.1
+* python-dotenv==0.19.2
+* python-multipart==0.0.5
+* PyYAML==6.0
+* six==1.16.0
+* sniffio==1.2.0
+* starlette==0.16.0
+* typing-extensions==4.0.1
+* uvicorn==0.16.0
+* uvloop==0.16.0
+* watchgod==0.7
+* websockets==10.1
 
 To install these requirements run the following command by saving the requirements.txt file and changing to the directory from a terminal window:
 	
@@ -21,7 +37,7 @@ You will also need to install Exiftool by Phil Harvey
  
 For example, if you are running on Ubuntu then you can simply run the following command:
 
- sudo apt install exiftool
+ 	sudo apt install exiftool
  
 # Running the app
 To run the app you can use the following command from a terminal from the directory where 'main.py' is saved:
@@ -30,12 +46,12 @@ To run the app you can use the following command from a terminal from the direct
 
 Now open a browser to:
 
-   http://127.0.0.1:8000 
+  http://127.0.0.1:8000 
 
 You should see a JSON response:
-   
-   {"status":"running"}
-   
+
+   	{"status":"running"}
+
 # Interactive API documentation
 FastAPI comes with API documentation courtesy of swagger ui. To access this you should naviagte to:
 
