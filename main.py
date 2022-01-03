@@ -1,22 +1,20 @@
-from bson.objectid import ObjectId
+#import fastapi
 from fastapi import FastAPI, File, UploadFile
-
-#
+from bson.objectid import ObjectId
+#pymongo to communicate with MongoDB
 import pymongo
 from pymongo import MongoClient
 from pymongo import collection
-
-#import 
+#import other
 import subprocess
 import shutil
-from bson.objectid import ObjectId
 
 #mongodb code
 cluster = MongoClient("mongodb+srv://api:apipassword@metadata.tqne0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = cluster["metadata"]
 collection = db["file_metadata"] #db.file_metadata
 
-#
+#fastapi app
 app = FastAPI()
 
 
@@ -26,7 +24,7 @@ async def root():
 
 @app.post("/extract-metadata")
 async def create_upload_file(file: UploadFile = File(...)):
-    #post #metadata extracted from files
+    #post metadata extracted from files
     with open(f'{file.filename}', "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
@@ -49,6 +47,7 @@ async def create_upload_file(file: UploadFile = File(...)):
 
     file = collection.insert_one(metadict)
     
+    #mongodb pipeline
     pipeline = [
         {
             '$match': {
@@ -82,10 +81,11 @@ async def create_upload_file(file: UploadFile = File(...)):
 @app.get("/get-metadata/") #path parameter
 # The web framework gets post_id from the URL and passes it as a string
 async def get_by_id(extracted_id: str):
+    #mongodb pipeline
     pipeline = [
         {
             '$match': {
-                '_id': ObjectId(extracted_id) #test '61d0f096a6cc29921c17d76a'
+                '_id': ObjectId(extracted_id) 
             }
         }, {
             '$project': {
@@ -111,14 +111,11 @@ async def get_by_id(extracted_id: str):
         list.append(doc)    
     return list
 
-    #response = collection.aggregate(pipeline)
-    #return = response
-
   
-@app.get("/query-metadata/") #{tag}/{value}") #query parameter
-async def query(tag: str = None, value: str = None): #'*, post_id: str = None,'
+@app.get("/query-metadata/")
+async def query(tag: str = None, value: str = None): 
     #"query-metadata?tag=<tag>&value=<value>"
-    
+    #mongodb pipeline
     pipeline = [
         {
             '$match': {
@@ -150,10 +147,9 @@ async def query(tag: str = None, value: str = None): #'*, post_id: str = None,'
 
 
         
-@app.get("/get-all/") #path parameter
-# The web framework gets post_id from the URL and passes it as a string
+@app.get("/get-all/") #retreiving all records
 async def getAll():
-    # retreiving all records
+    #mongodb pipeline
     pipeline =  [
         {
             '$project': {
