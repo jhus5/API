@@ -60,6 +60,8 @@ FastAPI comes with API documentation courtesy of swagger ui. To access this you 
 # Access endpoints
 You can access and test all the endpoints from the interactive api documentation as well as test it out.
 
+# FastAPI
+FastAPI was selected due to its high performance, especially with large amounts of data, and being fast to code. 
 
-# Sample unit data file to test app
-* unit_data https://github.com/Birkbeck/msc-information-technology-project-2020_21---files-jhussa09/tree/main/Unit_Data
+# Database
+MongoDB has been selected to file metadata with data being stored in self-contained JSON like documents. Being a NoSQL database MongoDB is also scalable horizontally. Querying in MongoDB is fast and aggregation pipeline has been utlised for querying. Aggregation operations allow for operations to run on the server. With a a large number of file data MongoDb also offers index feature, which allows to querying through indexes in addition to primary keys. 
