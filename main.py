@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 import pymongo
 from pymongo import MongoClient
 from pymongo import collection
-#import other
+#import uploading file and reading metadata
 import subprocess
 import shutil
 
